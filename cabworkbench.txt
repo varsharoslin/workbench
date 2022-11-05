@@ -1,0 +1,60 @@
+create database newcab;
+use newcab;
+
+create table cab_details
+(cab_no int primary key auto_increment,
+cab_name varchar(50),
+cab_des varchar(200),
+cab_cap int
+);
+
+create table tbl_passenger
+(p_id int primary key auto_increment,
+name varchar(50),
+user_name varchar(50),
+email varchar(50),
+password varchar(50),
+phone int,
+address varchar(100),
+dob date
+);
+
+create table tbl_schedule
+(s_id int primary key auto_increment,
+cab_from varchar(50),
+cab_to varchar(50),
+cab_date date,
+cab_time time,
+cost int,
+cab_no int, foreign key(cab_no) references cab_details(cab_no),
+dob date
+);
+
+create table tbl_bticket
+(ticket_no int primary key auto_increment,
+booking_date date,
+travel_date date,
+cab_no int, foreign key(cab_no) references cab_details(cab_no) ,
+cab_from varchar(50),
+cab_to varchar(50),
+cab_time time,
+p_id int, foreign key(p_id) references tbl_passenger(p_id)
+);
+create table cab_booking(
+id int primary key auto_increment,
+f_name varchar(50) not null,
+l_name varchar(50) not null,
+gender varchar(40),
+pick_up varchar(50) not null,
+drop_off varchar(50) not null,
+passenger_no int ,
+ p_email varchar(50),
+ p_mobile int,
+ p_address varchar(50) not null,
+ pickup_time int,
+ cost int not null,
+ cab_number int not null);
+ create table login(
+id int,
+username varchar(50) not null,
+password varchar(40));
